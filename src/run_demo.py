@@ -1,8 +1,3 @@
-"""
-Main demonstration script.
-Runs all four components and produces validation output for Chapter 3.
-"""
-
 import sys
 import os
 import numpy as np

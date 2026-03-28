@@ -1,7 +1,3 @@
-"""
-Simple data classes used by the surge engines, auditor, and monitor.
-"""
-
 from dataclasses import dataclass, field
 
 

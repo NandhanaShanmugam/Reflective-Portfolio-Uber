@@ -1,19 +1,8 @@
-"""
-Baseline surge pricing engine.
-Computes a surge multiplier from supply-demand ratio alone.
-No ethical constraints are applied.
-"""
-
-
 class BaselineSurgeEngine:
     """Pure supply-demand surge calculator."""
 
     def calculate_surge(self, zone):
-        """Return a multiplier (float) for the given zone.
-
-        Args:
-            zone: object with .demand (int) and .supply (int) attributes.
-        """
+        
         ratio = zone.demand / max(zone.supply, 1)
 
         if ratio > 2.0:

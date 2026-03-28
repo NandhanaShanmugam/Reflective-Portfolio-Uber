@@ -1,9 +1,3 @@
-"""
-Fairness auditor.
-Tests whether surge pricing disproportionately affects certain
-neighbourhoods based on median income (EG-6, EG-7).
-"""
-
 from scipy.stats import pearsonr
 
 
@@ -11,15 +5,7 @@ class FairnessAuditor:
     """Audit surge history for neighbourhood-level disparities."""
 
     def audit(self, surge_log, demographics):
-        """Check correlation between average surge and zone income.
-
-        Args:
-            surge_log: dict {zone_id: [list of multipliers]}
-            demographics: dict {zone_id: {'median_income': float}}
-
-        Returns:
-            dict with correlation coefficient, p-value, and per-zone stats.
-        """
+        
         zone_stats = {}
         surges, incomes = [], []
 

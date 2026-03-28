@@ -1,11 +1,3 @@
-"""
-Ethical surge pricing engine.
-Extends BaselineSurgeEngine with constraints derived from:
-  - Utilitarianism (EG-3): driver share guarantee
-  - Deontology (EG-5): transparency logging
-  - Care Ethics (EG-2, EG-7): emergency and low-income caps
-"""
-
 import json
 import datetime
 from src.baseline_surge import BaselineSurgeEngine
@@ -21,12 +13,7 @@ class EthicalSurgeEngine(BaselineSurgeEngine):
         self.transparency_log = []
 
     def calculate_surge(self, zone, context):
-        """Compute a constrained surge multiplier.
-
-        Args:
-            zone: object with .demand, .supply, .median_income, .id
-            context: object with .is_emergency (bool)
-        """
+        
         mult = super().calculate_surge(zone)
         constraints = []
 
@@ -50,11 +37,7 @@ class EthicalSurgeEngine(BaselineSurgeEngine):
         return mult
 
     def enforce_driver_share(self, rider_fare, base_fare):
-        """Return the minimum driver payment for a trip.
-
-        Ensures the driver receives at least self.min_driver_share of the
-        total fare, implementing EG-3 (utilitarian) and EG-9 (care ethics).
-        """
+        
         return max(rider_fare * self.min_driver_share, base_fare)
 
     def _log(self, zone, mult, constraints):

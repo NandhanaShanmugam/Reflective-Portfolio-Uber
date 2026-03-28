@@ -1,16 +1,3 @@
-"""
-Simulation: Fixed 75% vs ChatGPT's Split Model
-================================================
-Compares driver annual income under:
-  - Fixed 75% share on all trips
-  - ChatGPT's proposal: 65% base + 100% of surge increment to driver
-
-Shows that the split model pays drivers less overall because
-surge trips are rare and the lower base share dominates.
-
-Used as evidence in Chapter 6 (Nandhana's argument).
-"""
-
 import numpy as np
 
 np.random.seed(42)

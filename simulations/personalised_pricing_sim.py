@@ -1,13 +1,3 @@
-"""
-Simulation: Personalised vs Uniform Pricing
-============================================
-Demonstrates that willingness-to-pay pricing penalises frequent
-bookers (often lower-income commuters) rather than simply charging
-the wealthy more.
-
-Used as evidence in Chapter 5 (Vishal's argument).
-"""
-
 import numpy as np
 from collections import defaultdict
 
