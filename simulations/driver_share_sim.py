@@ -6,7 +6,6 @@ WEEKS = 52
 TRIPS_PER_WEEK = 45
 BASE_FARE = 15.0
 
-
 def simulate_weekly_income(base_share, model):
     """Simulate a driver's income over one year.
 
@@ -38,7 +37,6 @@ def simulate_weekly_income(base_share, model):
             if model == "fixed":
                 income += fare * base_share
             else:
-                # base share on base fare, 100% of surge increment to driver
                 base_part = BASE_FARE * base_share
                 surge_increment = max(0, fare - BASE_FARE)
                 income += base_part + surge_increment
@@ -59,12 +57,16 @@ def main():
     print(f"\nFixed 75% model:")
     print(f"  Annual income:  EUR {sum(fixed):,.0f}")
     print(f"  Avg weekly:     EUR {np.mean(fixed):,.0f}")
+    print(f"  Median weekly:  EUR {np.median(fixed):,.0f}")
+    print(f"  Std deviation:  EUR {np.std(fixed):,.0f}")
     print(f"  Min week:       EUR {min(fixed):,.0f}")
     print(f"  Max week:       EUR {max(fixed):,.0f}")
 
     print(f"\nChatGPT split model (65% base + 100% surge):")
     print(f"  Annual income:  EUR {sum(split):,.0f}")
     print(f"  Avg weekly:     EUR {np.mean(split):,.0f}")
+    print(f"  Median weekly:  EUR {np.median(split):,.0f}")
+    print(f"  Std deviation:  EUR {np.std(split):,.0f}")
     print(f"  Min week:       EUR {min(split):,.0f}")
     print(f"  Max week:       EUR {max(split):,.0f}")
 
@@ -73,8 +75,7 @@ def main():
 
     if diff > 0:
         print("\nConclusion: Fixed 75% is better for drivers overall.")
-        print("The lower base share in the split model outweighs the")
-        print("surge bonus because surge trips are only ~5% of all trips.")
+        print("The lower base share in the split model outweighs the surge bonus because surge trips are only approximately 5% of all trips.")
 
 
 if __name__ == "__main__":
